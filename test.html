@@ -1,0 +1,34 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title></title> </head> <body> <script>
+const { log } = console;
+
+/* JSON */
+log( JSON.stringify(undefined) )
+log( JSON.stringify(_ => _) )
+
+log( JSON.stringify(NaN) )
+log( JSON.stringify(Infinity) )
+log( JSON.stringify(null) )
+
+log( JSON.stringify(new String('string')) )
+log( JSON.stringify(new Number(1)) )
+log( JSON.stringify(new Boolean(true)) )
+
+log( JSON.stringify( [
+  undefined,
+  Symbol(1),
+  _ => _,
+  null
+] ) )
+
+log( JSON.stringify( {
+  name: 'eren',
+  age: 19
+} ) )
+
+log( JSON.stringify( {
+  name: undefined,
+  age: _ => _,
+  [Symbol(222)]: 23,
+  gender: Symbol(123),
+} ) )
+</script> </body> </html>
