@@ -2,33 +2,79 @@
 const { log } = console;
 
 /* JSON */
-log( JSON.stringify(undefined) )
-log( JSON.stringify(_ => _) )
+JSON.stringify(undefined)
+JSON.stringify(_ => _)
 
-log( JSON.stringify(NaN) )
-log( JSON.stringify(Infinity) )
-log( JSON.stringify(null) )
+JSON.stringify(NaN)
+JSON.stringify(Infinity)
+JSON.stringify(null)
 
-log( JSON.stringify(new String('string')) )
-log( JSON.stringify(new Number(1)) )
-log( JSON.stringify(new Boolean(true)) )
+JSON.stringify(new String('string'))
+JSON.stringify(new Number(1))
+JSON.stringify(new Boolean(true))
 
-log( JSON.stringify( [
+JSON.stringify( [
   undefined,
   Symbol(1),
   _ => _,
   null
-] ) )
+])
 
-log( JSON.stringify( {
+JSON.stringify( {
   name: 'eren',
   age: 19
-} ) )
+})
 
-log( JSON.stringify( {
+JSON.stringify( {
   name: undefined,
   age: _ => _,
   [Symbol(222)]: 23,
   gender: Symbol(123),
-} ) )
+})
+
+// Converting circular structure to JSON
+// obj = {}
+// obj.name = obj
+// JSON.stringify(obj)
+
+JSON.stringify({
+  name: 'armin',
+  toJSON: _ => '???'
+})
+
+
+JSON.stringify(Object.create(null, {
+  name: {value: 'eren', enumerable: true},
+  gender: {value: 'male', enumerable: false}
+}))
+
+JSON.stringify({
+  name: 'armin',
+  toJSON: _ => '???'
+})
+
+/* replacer Array */
+JSON.stringify({
+  name: 'eren',
+  age: 19,
+  gender: 'male'
+}, ['name'])
+
+/* replacer Function */
+JSON.stringify({
+  name: 'eren',
+  age: 19,
+  gender: 'male'
+}, (key, value) => {
+  if (value === 19) return undefined
+  return value
+})
+
+/* space */
+JSON.stringify({
+  name: 'eren',
+  age: 20
+}, null, "      ")
+
+
 </script> </body> </html>

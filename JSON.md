@@ -19,4 +19,7 @@
       + 不可枚举的成员被忽略
     * 有成员方法 toJSON, 该 toJSON 方法覆盖该对象默认的序列化行为
   - replacer [Function | Array | Null/Empty]
+    * Null/Empty: replacer 不生效
+    * Array:
+    * Function:
   - space [Number | String | Null/Empty]
